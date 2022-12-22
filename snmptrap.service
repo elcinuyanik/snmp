@@ -1,0 +1,17 @@
+[Unit]
+Description=SNMP Trap Service
+After=multi-user.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/environment
+EnvironmentFile=/root/.bashrc
+WorkingDirectory=/opt/
+ExecStart=/usr/bin/python3 /opt/modules/snmpx/trap.py
+Restart=always
+RestartSec=50s
+
+SyslogIdentifier=SnmpTrap
+User=root
+[Install]
+WantedBy=multi-user.target
